@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 2000px;
+}
+
+header {
+    border-radius: 10px;
+}
+#logo {
+    height: 50px;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+}
+
+.list {
+    list-style-type: none;
+    font-size: 20px;
+}
+
+#right {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+}

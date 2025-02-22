@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1>Sensor data Plotting</h1>
+    <div class="chart-container">
+        <canvas id="myChart"></canvas>
+    </div>
+    
+    <script>
+        function fetchData() {
+            const xml = new XMLHttpRequest();
+            xml.open('GET', 'http://127.0.0.1:5000/data/mongo', true);
+            
+            xml.responseType = 'json';
+            xml.onload = function() {
+                if (xml.status != 200) {
+                    alert(`Error ${xml.status}: ${xml.statusText}`);
+                }else {
+                    const response = xml.response;
+                    //let avg = 0;
+                    let lastValue = response[response.length-1]
+                    let temp = lastValue['temp'];
+                    let humid = lastValue['humid'];
+                    
+                    //Date to String
+                    function takeTime() {
+                        let ISODate = new Date(lastValue.date['$date'])
+                        let year = ISODate.getFullYear();
+                        let month = String(ISODate.getMonth()<8 ? '0' + ISODate.getMonth() : ISODate.getMonth());
+                        let day = String(ISODate.getDate()<8 ? '0' + ISODate.getDate() : ISODate.getDate());
+                        let time = `${year}-${month}-${day}`;
+                        console.log(time);
+                        return time;
+                    }
+                    
+                    //Chart
+                    var data = {
+                            labels: [takeTime()],
+                            datasets: [{
+                                label: 'Current Temperature',
+                                data: [temp],
+                                borderWidth: 1
+                            }, {
+                                label: 'Current Humidity',
+                                data: [humid],
+                                borderWidth: 1
+                            }]}
+                    var ctx = document.getElementById('myChart');
+                    var chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: data,
+                        options: {
+                            responsive: false
+                        }
+                    });
+                    console.log(chart.data.datasets[0].data);
+                    //Update the chart
+                    function addData() {
+                        if (chart) {
+                            chart.data.datasets[0].data.push(temp);
+                            chart.data.datasets[1].data.push(humid);
+                            chart.data.labels.push(takeTime());
+
+                            //Remove data if exceed 20 docs
+                            if (chart.data.labels.length > 5) {
+                                chart.data.labels.shift();
+                                chart.data.datasets.forEach((dataset) => {
+                                    dataset.data.shift();
+                                })
+                            }
+                            chart.update();
+                        }else {
+                            console.warn('Chart instance was null. Skipping Update')
+                        }
+                    }
+
+                    let timer = setInterval(() => addData(), 5000);
+
+                }
+                
+            }
+            xml.send(); 
+        }   
+         
+        fetchData();
+    </script>
+{% endblock %}  
