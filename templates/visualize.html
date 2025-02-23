@@ -21,6 +21,18 @@
                     let lastValue = response[response.length-1]
                     let temp = lastValue['temp'];
                     let humid = lastValue['humid'];
+
+                    let tempList = []
+                    let humidList = []
+                    let labels = []
+                    //Fetch first 20 docs
+                    if (response.length >= 20) {
+                        for(let i = response.length-21; i < response.length; i++) {
+                            tempList.push(response[i]['temp']);
+                            humidList.push(response[i]['humid']);
+                            labels.push(response[i].date['$date']);
+                        }
+                    }
                     
                     //Date to String
                     function takeTime() {
@@ -32,17 +44,18 @@
                         console.log(time);
                         return time;
                     }
-                    
+                                    
+
                     //Chart
                     var data = {
-                            labels: [takeTime()],
+                            labels: labels,
                             datasets: [{
                                 label: 'Current Temperature',
-                                data: [temp],
+                                data: tempList,
                                 borderWidth: 1
                             }, {
                                 label: 'Current Humidity',
-                                data: [humid],
+                                data: humidList,
                                 borderWidth: 1
                             }]}
                     var ctx = document.getElementById('myChart');
@@ -62,7 +75,7 @@
                             chart.data.labels.push(takeTime());
 
                             //Remove data if exceed 20 docs
-                            if (chart.data.labels.length > 5) {
+                            if (chart.data.labels.length > 20) {
                                 chart.data.labels.shift();
                                 chart.data.datasets.forEach((dataset) => {
                                     dataset.data.shift();

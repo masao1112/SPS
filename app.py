@@ -29,8 +29,6 @@ def firebase_fetch():
         "date": datetime.now()})
     print('Data fetched')
 
-    # threshold = firebaseURL.get('/threshold', None)
-    # threshold
 # this is mongo db collection
 registrants = db.sensor_data
 

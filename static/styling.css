@@ -6,9 +6,21 @@ body {
 
 header {
     border-radius: 10px;
+    position: sticky;
+    top: 0;
+    height: 80px;
+    z-index: 2;
 }
+
 #logo {
-    height: 50px;
+    height: 40px;
+    margin-left: 10px;
+}
+
+#title {
+    font-size: 30px;
+    padding-left: 15px;
+    padding-top: 5px;
 }
 
 #container {
@@ -16,13 +28,37 @@ header {
     flex-direction: row;
 }
 
+
+#left{
+    width: 256px;
+}
+
 .list {
     list-style-type: none;
-    font-size: 20px;
+    font-size: 18px;
+}
+
+.left-hand-menu{
+    background-color: none;
+    height: 50px;
+    padding: 13px 0px 10px 23px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
 }
 
 #right {
     margin-left: 50px;
     display: flex;
     flex-direction: column;
+}
+
+.historical-data {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.left-hand-menu:hover {
+    background-color: #f0ecec;
+    cursor: pointer;
 }
