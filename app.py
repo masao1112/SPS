@@ -6,7 +6,6 @@ from bson import json_util
 from apscheduler.schedulers.background import BackgroundScheduler
 import time
 from firebase import firebase
-from firebase_token_generator import create_token
 
 # db establishment
 app = Flask(__name__)
@@ -22,7 +21,7 @@ firebaseURL = firebase.FirebaseApplication('https://sensor-data-6f9b0-default-rt
 
 # fetch data from firebase to MongoDB
 def firebase_fetch():
-    sensorData = firebaseURL.get('/sensor_data', None)
+    sensorData = firebaseURL.get('/sensor_data/number', None)
     db.sensor_data.insert_one({
         "temp": sensorData['temp'],
         "humid": sensorData['hum'],
@@ -33,33 +32,14 @@ def firebase_fetch():
 registrants = db.sensor_data
 
 @app.route("/", methods=['GET', 'POST'])
-def index():
-    if request.method == 'POST':
-        registrants.insert_one({
-            "name": request.form.get("name"),
-            "field": request.form.get("sport"),
-            "date": datetime.now()
-        })
-        return redirect(url_for('index'))
-    registrants_data = registrants.find()
-    return render_template('index.html', registers=registrants_data)
-
-@app.route("/data/visualize")
 def sensorDataVisualize():
-    return render_template("mainPage.html")
-
+    return render_template("mainPage.html")    
 
 # Return fetched data on a webpage for xml req in JS
 @app.route("/data/mongo")
 def fetchFromMongo():
     data = db.sensor_data.find()
     return json_util.dumps(data)
-
-
-# Return user desired threshold on a web page for xml req in JS
-@app.route('/users/input/fetch',  methods=['GET', 'POST'])
-def fetchFromUser():
-    return render_template('body.html')
 
 
 scheduler = BackgroundScheduler()
