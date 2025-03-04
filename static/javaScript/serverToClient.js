@@ -23,10 +23,10 @@ import { getDatabase, ref, get, child, set, update, remove } from "https://www.g
 const db = getDatabase();
 // Get DOM elements
 let thresholdValue = document.getElementById('mySlider').value;
-let updateButton = document.getElementById('updateButton');
 
 // Get threshold value when open
-get(ref(db, '/threshold/moisture')).then(childData => {
+get(ref(db, '/threshold/moisture'))
+.then(childData => {
     if (childData.exists()){
         thresholdValue = childData.val();
         console.log("Successfully get data: " + thresholdValue)
@@ -49,3 +49,25 @@ function updateData() {
 }    
 
 window.updateData = updateData;
+
+// Fetch data from server side
+var pumpCheckBox = document.querySelector("#pump-status-check");
+var lightCheckBox = document.querySelector("#light-status-check")
+
+function checkPumpStatus() {
+    get(ref(db, '/sensor_data/switch/'))
+    .then(childData => {
+        if (childData.exists()){
+            var pumpStatus = childData.val().pumpStatus;
+            var lightStatus = childData.val().lightStatus;
+            if (lightStatus != lightCheckBox.checked) lightCheckBox.checked = lightStatus;
+            if (pumpStatus != pumpCheckBox.checked) pumpCheckBox.checked = pumpStatus; 
+            console.log(lightStatus);
+        }
+    }).catch(() => {
+        console.log(error);
+    }) 
+}
+
+setInterval(checkPumpStatus, 1000);
+    
