@@ -83,8 +83,8 @@ function fetchData() {
                         datasets: [{ 
                             label: 'Current Temperature', 
                             data: latestTempList, 
-                            borderWidth: 1,
-                            borderColor: 'rgb(227, 94, 32)',
+                            backgroundColor: 'rgba(237, 45, 45, 0.5)',
+                            borderColor: 'rgba(237, 45, 45, 0.5)',
                         }]
                     },
                     options: { 
@@ -97,9 +97,11 @@ function fetchData() {
                                         size: 20
                                     }
                                 },
-                            }
-                        }
-                    }
+                            },
+                        },
+                        fill: true
+                    },
+                    
                 });
             }
 
@@ -139,12 +141,12 @@ function fetchData() {
                                         size: 20
                                     }
                                 }
-                            }
-                        }
-                    }
+                            }, 
+                        },
+                        fill: true
+                    },
                 });
             }
-
         }
     }
     xml.send(); 

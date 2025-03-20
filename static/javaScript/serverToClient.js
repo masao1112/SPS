@@ -5,13 +5,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebas
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-apiKey: "AIzaSyCc2zXkyRKfHavz6B_ATJnjFepSu9vY0lY",
-authDomain: "sensor-data-6f9b0.firebaseapp.com",
-databaseURL: "https://sensor-data-6f9b0-default-rtdb.asia-southeast1.firebasedatabase.app",
-projectId: "sensor-data-6f9b0",
-storageBucket: "sensor-data-6f9b0.firebasestorage.app",
-messagingSenderId: "187832822335",
-appId: "1:187832822335:web:c3b7f6ecaf996a4f38a68a"
+  apiKey: "AIzaSyCc2zXkyRKfHavz6B_ATJnjFepSu9vY0lY",
+  authDomain: "sensor-data-6f9b0.firebaseapp.com",
+  databaseURL: "https://sensor-data-6f9b0-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "sensor-data-6f9b0",
+  storageBucket: "sensor-data-6f9b0.firebasestorage.app",
+  messagingSenderId: "187832822335",
+  appId: "1:187832822335:web:c3b7f6ecaf996a4f38a68a"
 };
 
 // Initialize Firebase
@@ -65,7 +65,7 @@ function checkPumpStatus() {
             console.log(lightStatus);
         }
     }).catch(() => {
-        console.log(error);
+        console.log("error");
     }) 
 }
 

@@ -7,10 +7,12 @@ body {
 header {
     border-radius: 10px;
     position: sticky;
+    margin-bottom: 40px;
     top: 0;
     height: 80px;
     z-index: 2;
 }
+
 
 #logo {
     height: 40px;
@@ -31,11 +33,14 @@ header {
 
 #left{
     width: 256px;
+    position: fixed 
 }
 
 .list {
     list-style-type: none;
     font-size: 18px;
+    color: black;
+    text-decoration: none;
 }
 
 .left-hand-menu{
@@ -47,7 +52,7 @@ header {
 }
 
 #right {
-    margin-left: 50px;
+    margin-left: 270px;
     display: flex;
     flex-direction: column;
 }
