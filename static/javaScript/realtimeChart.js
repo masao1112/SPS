@@ -67,7 +67,7 @@ function fetchRealtimeData() {
         ];
 
         var layout = {
-          width: 800,
+          width: 1000,
           height: 400,
           margin: { t: 25, b: 25, l: 25, r: 25 },
           grid: { rows: 2, columns: 2, pattern: "independent" },

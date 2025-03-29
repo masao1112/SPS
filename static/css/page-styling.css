@@ -1,7 +1,7 @@
 body {
     display: flex;
     flex-direction: column;
-    height: 2000px;
+    height: 2200px;
 }
 
 header {
@@ -57,11 +57,44 @@ header {
     flex-direction: column;
 }
 
+.img-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.img-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 350px;
+    width: 550px;
+    object-fit: cover;
+}
+
 .historical-data {
     display: flex;
     flex-direction: column;
 }
 
+.current-data-section {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+}
+
+.boolean-status {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.pump-status {
+    margin-left: 35px;
+}
+
+.light-status {
+    margin-right: 20px
+}
 
 .left-hand-menu:hover {
     background-color: #f0ecec;

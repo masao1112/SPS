@@ -51,23 +51,34 @@ function updateData() {
 window.updateData = updateData;
 
 // Fetch data from server side
-var pumpCheckBox = document.querySelector("#pump-status-check");
-var lightCheckBox = document.querySelector("#light-status-check")
+var pumpStatus = document.querySelector(".pump");
+var lightStatus = document.querySelector(".light")
 
-function checkPumpStatus() {
+function checkStatus() {
     get(ref(db, '/sensor_data/switch/'))
     .then(childData => {
         if (childData.exists()){
-            var pumpStatus = childData.val().pumpStatus;
-            var lightStatus = childData.val().lightStatus;
-            if (lightStatus != lightCheckBox.checked) lightCheckBox.checked = lightStatus;
-            if (pumpStatus != pumpCheckBox.checked) pumpCheckBox.checked = pumpStatus; 
-            console.log(lightStatus);
+            var fetchedPS = childData.val().pumpStatus;
+            var fetchedLS = childData.val().lightStatus;
+            console.log("hi")
+            if (!fetchedPS) {
+                pumpStatus.style.backgroundColor = 'gray';            
+            }else {
+                pumpStatus.style.backgroundColor = "red";
+                pumpStatus.style.transition = "background-color .2s"
+            }
+
+            if (!fetchedLS) {
+                lightStatus.style.backgroundColor = "gray";
+            }else {
+                lightStatus.style.backgroundColor = "red";
+                lightStatus.style.transition = "background-color .2s"
+            }
         }
     }).catch(() => {
-        console.log("error");
+        console.error("There's something wrong", Error);
     }) 
 }
 
-setInterval(checkPumpStatus, 1000);
+setInterval(checkStatus, 1000);
     

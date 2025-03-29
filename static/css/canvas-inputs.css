@@ -22,7 +22,7 @@ canvas {
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
   width: 80%; /* Full-width */
-  height: 15px; /* Specified height */
+  height: 13px; /* Specified height */
   border-radius: 10px;
   background: #d3d3d3; /* Grey background */
   outline: none; /* Remove outline */
@@ -44,8 +44,9 @@ canvas {
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
   border-radius: 20px;
-  background: blue; /* Green background */
+  background: white; /* Green background */
   cursor: pointer; /* Cursor on hover */
+  box-shadow:0 .225rem .35rem rgba(0,0,0,.35)
 }
 
 .slider::-moz-range-thumb {
@@ -55,13 +56,6 @@ canvas {
   cursor: pointer; /* Cursor on hover */
 }
 
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
 
 /* Hide default HTML checkbox */
 .switch input {
@@ -70,54 +64,30 @@ canvas {
   height: 0;
 }
 
-/* The slider */
-.toggle {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+/*On/off switch*/
+.toggle-switch {
+  position: relative;
+  width: 100px;
+  height: 50px;
+  background-color: #d3d3d3;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  box-sizing: border-box;
 }
 
-.toggle:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .toggle {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .toggle:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.toggle.round {
-  border-radius: 34px;
-}
-
-.toggle.round:before {
+.circle {
+  width: 40px;
+  height: 40px;
+  background-color: gray;
   border-radius: 50%;
+  transition: background-color 0.3s ease;
 }
 
+.circle.active {
+}
 .submitBtn {
   width: 75px;
   height: 36px;
