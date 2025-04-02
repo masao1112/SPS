@@ -1,13 +1,13 @@
 body {
     display: flex;
     flex-direction: column;
-    height: 2200px;
+    height: 2800px;
 }
 
 header {
     border-radius: 10px;
     position: sticky;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     top: 0;
     height: 80px;
     z-index: 2;
@@ -57,6 +57,14 @@ header {
     flex-direction: column;
 }
 
+section{
+    margin-top: 20px;
+}
+
+.description {
+    font-size: 20px;
+}
+
 .img-desc {
     display: flex;
     flex-direction: column;
@@ -69,6 +77,14 @@ header {
     height: 350px;
     width: 550px;
     object-fit: cover;
+}
+
+.img-full{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 450px;
+    width: 750px;
 }
 
 .historical-data {

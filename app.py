@@ -7,7 +7,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import time
 from firebase import firebase
 
-# db establishment
+# Flask intergration
 app = Flask(__name__)
 # Create a new client and connect to the server
 client = MongoClient('mongodb+srv://masao1112:qtGdMPZYltnxiFyK@testing.z78xt.mongodb.net/?retryWrites=true&w=majority&appName=Testing')

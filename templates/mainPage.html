@@ -50,10 +50,29 @@
                 <div id="right">
                     <section id="home" class="section">
                         <h2>Home Page</h2>
-                        <p>This is the home page</p>
+                        <div class="description">
+                            <p>
+                                This project is a prototype of a smart planting system that automates plant care using IoT technology. The motivation behind this project stems from an interest in exploring smart agriculture solutions while contributing to the field with a practical, automated system.
+                            </p>
+                            <p>The system features:</p>
+                            <ul>
+                                <li><b>Watering</b>: Automatically waters plants based on soil moisture levels.</li>
+                                <li><b>Grow Lights</b>: Provides artificial lighting to support plant growth.</li>
+                                <li><b>Visualization</b>: Displays both real-time and historical sensor data using a web interface.</li>
+                                <li><b>User Interaction</b>: Allows users to adjust thresholds for watering and lighting through an interactive interface.
+                                </li>
+                            </ul>
+                        </div>
                         <div class="img-desc">
                             <img src="/static/SMS.png" class="img-center">
                             <p style="text-align: center;"><i>Simulate Circuit Wiring</i></p>
+                        </div>
+                        <div>
+                            <p class="description">Using an ESP32 for data transmission and control, along with HTTP for cloud communication, this project integrates Flask, MongoDB, and Firebase for backend processing and data visualization.</p>
+                        </div>
+                        <div class="img-desc">
+                            <img src="/static/Steps for Implementation.png" class="img-full">
+                            <p style="text-align: center;"><i>Steps for Implementations</i></p>
                         </div>
                     </section>
 
@@ -86,31 +105,39 @@
                         </div>
                     </section>
 
-                    <section id="features" class="section">
+                    <!-- <section id="features" class="section">
                         <h2>Feature Extraction</h2>
                         <p>This is the feature extraction</p>
-                    </section>
+                    </section> -->
 
                     <section id="assistant">
-                        <h2>Garden Assistant</h2>
-                        <p>This is the garden assistant</p>
+                        <h2>User Interactions</h2>
+                        <p>Adjust the settings to your likely.</p>
                         <div class="slider-container">
-                            <input type="range" min="1" max="100" class="slider" id="mySlider" name="threshold">
+                            <!-- Moisture Threshold Slider -->
+                            <input type="range" min="1" max="100" class="slider" id="myMoistureSlider" name="threshold">
                             <div>
-                                <button class="submitBtn" id="updateButton" onclick="updateData()">Update</button>
+                                <p id="myMoistureThreshold"></p>
+                            </div>
+
+                            <!-- Light Threshold Slider -->
+                            <input type="range" min="1" max="100" class="slider" id="myLightSlider" name="threshold">
+                            <div>
+                                <p id="myLightThreshold"></p>
+                            </div>
+                            
+                            <div>
+                                <button class="submit-button" id="updateButton" onclick="updateData()">Update</button>
                             </div>
                         </div>
-                        <div>
-                            <p id="myValue"></p>
-                        </div>
+                    </section>
+
+                    <section style="margin-top: 50px;">
+                        <p>&#169;2025 This is Smart Planting System</p>
                     </section>
                 </div>
             </div>
         </main>
-
-        <footer>
-            <p>2025 This is Smart Planting System</p>
-        </footer>
         
     </body>
 
@@ -122,21 +149,7 @@
     <script type="module" src="/static/javaScript/serverToClient.js"></script>
 
     <!-- Slider value on Screen -->
-    <script>
-        var userInput = document.getElementById("mySlider");
-        var valueOnScreen = document.getElementById("myValue");
-        if (localStorage.getItem("rangeValue")) {
-                userInput.value = localStorage.getItem("rangeValue");
-                valueOnScreen.innerHTML = `<h4>Moisture Threshold ${userInput.value}</h4>`;
-            }
-        //Function on input
-        function fetchUserInput() {
-            localStorage.setItem("rangeValue", userInput.value);
-            valueOnScreen.innerHTML = `<h4>Moisture Threshold ${userInput.value}</h4>`;
-            console.log(JSON.stringify({"user input": userInput.value}));
-        }
-        userInput.addEventListener("input", fetchUserInput);        
-    </script>
+    <script src="/static/javaScript/valueOnScreen.js"></script>
 
     <!-- Fetch realtime Data w Plotly -->
     <script type="module" src="/static/javaScript/realtimeChart.js"></script>

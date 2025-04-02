@@ -22,7 +22,8 @@ import { getDatabase, ref, get, child, set, update, remove } from "https://www.g
 // Database deplayment
 const db = getDatabase();
 // Get DOM elements
-let thresholdValue = document.getElementById('mySlider').value;
+let thresholdMoistureValue = document.getElementById('myMoistureSlider').value;
+let thresholdLightValue = document.getElementById('myLightSlider').value;
 
 // Get threshold value when open
 get(ref(db, '/threshold/moisture'))
@@ -37,14 +38,17 @@ get(ref(db, '/threshold/moisture'))
 
 // Update threshold via user input
 function updateData() {
-    thresholdValue = document.getElementById('mySlider').value;
+    thresholdMoistureValue = document.getElementById('myMoistureSlider').value;
+    thresholdLightValue = document.getElementById('myLightSlider').value;
+
     update(ref(db, '/threshold'), {
-        moisture: parseInt(thresholdValue)
+        moisture: parseInt(thresholdMoistureValue),
+        intensity: parseInt(thresholdLightValue)
     }).then(() => {
         alert("Threshold adjusted Succesfully!!")
     }).catch(() => {
         alert('Cannot adjust the threshold.')
-        console.log(error);
+        console.log("Can't adjust threshold");
     })
 }    
 
@@ -60,7 +64,6 @@ function checkStatus() {
         if (childData.exists()){
             var fetchedPS = childData.val().pumpStatus;
             var fetchedLS = childData.val().lightStatus;
-            console.log("hi")
             if (!fetchedPS) {
                 pumpStatus.style.backgroundColor = 'gray';            
             }else {
