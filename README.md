@@ -1,3 +1,1 @@
-SmartPlantingSystem
-SmartPlantingSystem
-SmartPlantingSystem
+<h1>AN IOT PROJECT</h1>
