@@ -7,7 +7,7 @@ Project Root/<br>
 │   └── mainPage.html          # Main file<br>
 │<br>
 ├── static/                    # Static files<br>
-│   ├── css/<br><br>
+│   ├── css/<br>
 │   │   ├── frontend.css       # CSS for buttons, canvas tag<br>
 │   │   └── styling.css        # CSS for page layout<br>
 │   │<br>
