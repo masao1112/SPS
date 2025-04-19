@@ -1,3 +1,1 @@
-# SmartPlantingSystem
-# SPS
-# SPS
+SmartPlantingSystem
