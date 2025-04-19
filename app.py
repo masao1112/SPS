@@ -1,10 +1,8 @@
 from flask import Flask, request, render_template, url_for, redirect, jsonify
-from flask_pymongo import PyMongo
 from datetime import datetime
 from pymongo import MongoClient
 from bson import json_util
 from apscheduler.schedulers.background import BackgroundScheduler
-import time
 from firebase import firebase
 
 # Flask intergration

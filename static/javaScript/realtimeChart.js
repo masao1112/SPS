@@ -37,7 +37,7 @@ function fetchRealtimeData() {
             type: "indicator",
             value: tempValue,
             number: { suffix: '&#176;C', 'font.family': 30 },
-            delta: { reference: 30 },
+            delta: { reference: 50 },
             gauge: { axis: { visible: false, range: [0, 50] } },
             title: { text: 'Temperature'},
             domain: { row: 0, con: 0 }
@@ -45,8 +45,8 @@ function fetchRealtimeData() {
           {
             type: "indicator",
             value: humValue,
-            delta: { reference: 1024 },
-            gauge: { axis: { visible: false, range: [0, 1024] } },
+            delta: { reference: 100 },
+            gauge: { axis: { visible: false, range: [0, 100] } },
             title: { text: 'Humid'},
             domain: { row: 0, column: 1 },
           },
