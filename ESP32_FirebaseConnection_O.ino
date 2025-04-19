@@ -32,8 +32,8 @@ DHTesp dht;
 
 #define ssid "?"
 #define passwd "88888888"
-#define API_KEY "AIzaSyCc2zXkyRKfHavz6B_ATJnjFepSu9vY0lY"
-#define DATABASE_URL "https://sensor-data-6f9b0-default-rtdb.asia-southeast1.firebasedatabase.app/"
+#define API_KEY "API_KEY"
+#define DATABASE_URL "DB_URL"
 
 FirebaseData fbdo;
 FirebaseAuth auth;
